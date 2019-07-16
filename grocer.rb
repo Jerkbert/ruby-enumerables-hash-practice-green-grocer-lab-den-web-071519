@@ -1,8 +1,12 @@
+require "pry"
 def consolidate_cart(cart)
   new_cart = {} 
   cart.each do |item|
+    
     if new_cart[item.keys[0]]
+    
       new_cart[item.keys[0]][:count] += 1
+  
     else
       new_cart[item.keys[0]] = {
         :count => 1,
@@ -57,3 +61,17 @@ def checkout(cart, coupons)
  total > 100.00 ? (total*0.90).round : total
 end
 
+ cart_a = [
+      {"AVOCADO" => {:price => 3.00, :clearance => true}},
+      {"KALE" => {:price => 3.00, :clearance => false}},
+      {"BLACK_BEANS" => {:price => 2.50, :clearance => false}},
+      {"ALMONDS" => {:price => 9.00, :clearance => false}},
+      {"TEMPEH" => {:price => 3.00, :clearance => true}},
+      {"CHEESE" => {:price => 6.50, :clearance => false}},
+      {"BEER" => {:price => 13.00, :clearance => false}},
+      {"PEANUTBUTTER" => {:price => 3.00, :clearance => true}},
+      {"BEETS" => {:price => 2.50, :clearance => false}},
+      {"SOY MILK" => {:price => 4.50, :clearance => true}}
+    ]
+    
+puts consolidate_cart(cart_a)
